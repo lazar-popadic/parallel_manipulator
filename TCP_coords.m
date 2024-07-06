@@ -1,11 +1,12 @@
+clear
 % constant parameters
 L = 40;              % length of the static link [mm]
 P = 56;             % length of the proximal links [mm]
 D = 89.6;          % length of the distal l inks [mm]
 
 % input angles
-theta2 = 90;                                 % input angle at the left input joint [degrees]
-theta4 = 90;                               % input angle at the right input joint [degrees]
+theta2 = 150;                                 % input angle at the left input joint [degrees]
+theta4 = 75;                               % input angle at the right input joint [degrees]
 theta2rad = deg2rad(theta2);  % [radians]
 theta4rad = deg2rad(theta4);  % [radians]
 
@@ -55,11 +56,38 @@ fprintf('Right proximal angle in regards to right input: \t%.2f degrees\n\n', -t
 
 % Calculate the coordinates of Tcp
 xt1 = x3 + D*cos(deg2rad(theta3solved));
-xt2 = x5 + D*cos(deg2rad(theta5solved));
+%xt2 = x5 + D*cos(deg2rad(theta5solved));
 yt1 = y3 + D*sin(deg2rad(theta3solved));
-yt2 = y5 + D*sin(deg2rad(theta5solved));
+%yt2 = y5 + D*sin(deg2rad(theta5solved));
 
 xt = xt1;
 yt = yt1;
 
-fprintf('Coordinates of Tcp: \t\t(%.2f mm, %.2f mm)\n', xt, yt);
+fprintf('\nCoordinates of Tcp: \t\t(%.2f mm, %.2f mm)\n', xt, yt);
+
+% Plot links
+
+% Link 2
+x = [x2, x3];
+y = [y2, y3];
+plot(x,y, "k-s", "MarkerFaceColor","b","MarkerSize",12);
+hold on
+
+% Link 3
+x = [x3, xt];
+y = [y3, yt];
+plot(x,y, "k-s", "MarkerFaceColor","b","MarkerSize",12);
+hold on
+
+% Link 4
+x = [x4, x5];
+y = [y4, y5];
+plot(x,y, "k-s", "MarkerFaceColor","b","MarkerSize",12);
+hold on
+
+% Link 5
+axis([-120 120 -60 160])
+x = [x5, xt];
+y = [y5, yt];
+plot(x,y, "k-s", "MarkerFaceColor","b","MarkerSize",12);
+hold on 
