@@ -60,10 +60,10 @@ function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(left_ang_deg, righ
 
     % Display the solutions
 
-    fprintf('\nResults for checking with Fusion 360:\n\n');
-    fprintf('Left input angle: \t\t\t\t%.2f degrees\n', -theta2);
-    fprintf('Right input angle:  \t\t\t\t%.2f degrees\n', -theta4);
-    fprintf('Left proximal angle in regards to left input: \t%.2f degrees\n', -theta3solved + theta2);
-    fprintf('Right proximal angle in regards to right input: \t%.2f degrees\n\n', -theta5solved + theta4);
-    fprintf('\nCoordinates of Tcp: \t\t(%.2f mm, %.2f mm)\n', xt, yt);
+    % fprintf('\nResults for checking with Fusion 360:\n\n');
+    % fprintf('Left input angle: \t\t\t\t%.2f degrees\n', -theta2);
+    % fprintf('Right input angle:  \t\t\t\t%.2f degrees\n', -theta4);
+    % fprintf('Left proximal angle in regards to left input: \t%.2f degrees\n', -theta3solved + theta2);
+    % fprintf('Right proximal angle in regards to right input: \t%.2f degrees\n\n', -theta5solved + theta4);
+    % fprintf('\nCoordinates of Tcp: \t\t(%.2f mm, %.2f mm)\n', xt, yt);
 end
