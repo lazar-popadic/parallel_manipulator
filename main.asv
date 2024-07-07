@@ -1,21 +1,22 @@
 clear
 
-[xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = calculate_tcp(180,45);
+[xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(90,90);
 
 % Plot links
-n = 90;
+n = 10;
 
+xlim([-120 120])
+ylim([-50 160])
 hold on
 
-%xlim([min(x3, x2)-50 max(x5, x4)+50])
-%ylim([min(min(y3, y5)-50, -50)  max(max(yt, y5), y3)+50])
-
 for i = 2:n
-    [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = calculate_tcp(220-i,i-40);
-    f = plot(xt, yt, "MarkerFaceColor", 'r', "MarkerSize", 8);
+    [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(200-12*i,4*i-20);
+    f = plot(xt, yt, "k-s", "MarkerFaceColor", 'r', "MarkerSize", 8);
 	h = plot([x2 x3 xt x5 x4], [y2 y3 yt y5 y4], '-ok');
 	pause(0.1);
     delete(f)
     delete(h)
 end
-hold off
+
+f = plot(xt, yt, "k-s", "MarkerFaceColor", 'r', "MarkerSize", 8);
+h = plot([x2 x3 xt x5 x4], [y2 y3 yt y5 y4], '-ok');
