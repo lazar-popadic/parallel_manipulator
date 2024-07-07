@@ -1,4 +1,4 @@
-function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(left_ang_deg, right_ang_deg)
+function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forw_k(left_ang_deg, right_ang_deg)
     % constant parameters
     L = 40;              % length of the static link [mm]
     P = 56;             % length of the proximal links [mm]
@@ -33,8 +33,10 @@ function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(left_ang_deg, righ
 
     % Solve equations
     % [sol_theta3, sol_theta5] = solve([eq1, eq2], [theta3, theta5]);
-    sol_theta5(1) = wrapToPi(2*atan2(-B+sqrt(A*A+B*B-C*C), C-A));
-    sol_theta5(2) = wrapToPi(2*atan2(-B-sqrt(A*A+B*B-C*C), C-A));
+    sol_theta5(1) = 2*atan2(-B+sqrt(A*A+B*B-C*C), C-A);
+    sol_theta5(2) = 2*atan2(-B-sqrt(A*A+B*B-C*C), C-A);
+    sol_theta5(1) = wrapToPi(sol_theta5(1));
+    sol_theta5(2) = wrapToPi(sol_theta5(2));
 
     sol_theta3(1) = asin((y5-y3)/D + sin( sol_theta5(1)));
     sol_theta3(2) = asin((y5-y3)/D + sin( sol_theta5(2)));
@@ -51,12 +53,20 @@ function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forward_kinematics(left_ang_deg, righ
     
     % Calculate the coordinates of Tcp
     xt1 = x3 + D*cos(deg2rad(theta3solved));
-    %xt2 = x5 + D*cos(deg2rad(theta5solved));
+    xt2 = x5 + D*cos(deg2rad(theta5solved));
     yt1 = y3 + D*sin(deg2rad(theta3solved));
-    %yt2 = y5 + D*sin(deg2rad(theta5solved));
+    yt2 = y5 + D*sin(deg2rad(theta5solved));
 
-    xt = xt1;
-    yt = yt1;
+    if sqrt((xt1-x3)^2+(yt1-y3)^2) == D && sqrt((xt1-x5)^2+(yt1-y5)^2) == D
+        xt = xt1;
+        yt = yt1;
+    else
+        xt = xt2;
+        yt = yt2;
+    end
+
+    %xt = xt2;
+    %yt = yt2;
 
     % Display the solutions
 
