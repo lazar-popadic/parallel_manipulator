@@ -1,8 +1,5 @@
 function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forw_k(left_ang_deg, right_ang_deg)
-    % constant parameters
-    L = 40;              % length of the static link [mm]
-    P = 56;             % length of the proximal links [mm]
-    D = 89.6;          % length of the distal l inks [mm]
+    [L,P,D] = get_L_P_D();
 
     theta2 = left_ang_deg;
     theta4 = right_ang_deg;
@@ -26,7 +23,7 @@ function [xt,yt,x2,y2,x3,y3,x4,y4,x5,y5] = forw_k(left_ang_deg, right_ang_deg)
     % eq1 = x3 + D * cos(theta3) == x5 + D * cos(theta5);
     % eq2 = y3 + D * sin(theta3) == y5 + D * sin(theta5);
 
-    % Support variables
+    % Additional variables
     A = (x5 - x3) / D;
     B = (y5 - y3) / D;
     C = (A*A + B*B) / 2;
