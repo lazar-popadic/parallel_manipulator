@@ -2,11 +2,11 @@
 clear
 
 plot_forw_k(90, 90, 180, 0);
-pause(0.4);
+pause(0.2);
 plot_forw_k(180, 0, 220, 135);
-pause(0.4);
+pause(0.2);
 plot_forw_k(220, 135, 45, -40);
-pause(0.4);
+pause(0.2);
 plot_forw_k(45, -40, 135, 45);
 
 %% inv k test
@@ -16,10 +16,25 @@ clear
 [des_ang_left, des_ang_right] = inv_k(-90,1);
 
 plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
+pause(0.2);
 
 start_ang_left= des_ang_left;
 start_ang_right = des_ang_right;
 [des_ang_left, des_ang_right] = inv_k(0,140);
+
+plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
+pause(0.2);
+
+start_ang_left= des_ang_left;
+start_ang_right = des_ang_right;
+[des_ang_left, des_ang_right] = inv_k(90,1);
+
+plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
+pause(0.2);
+
+start_ang_left= des_ang_left;
+start_ang_right = des_ang_right;
+[des_ang_left, des_ang_right] = inv_k(0,60);
 
 plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
 
