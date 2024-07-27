@@ -20,8 +20,8 @@ function [left_ang_deg, right_ang_deg] = inv_k(xt,yt)
     % Solve ik
     sol_theta2(1) = 2*atan2(1+sqrt(1-C1*C1+C2*C2), C1+C2);
     sol_theta2(2) = 2*atan2(1-sqrt(1-C1*C1+C2*C2), C1+C2);
-    sol_theta2(1) = wrapToPi(sol_theta2(1));
-    sol_theta2(2) = wrapToPi(sol_theta2(2));
+    %sol_theta2(1) = wrapToPi(sol_theta2(1));
+    %sol_theta2(2) = wrapToPi(sol_theta2(2));
 
     sol_theta4(1) = 2*atan2(1+sqrt(1-C3*C3+C4*C4), C3+C4);
     sol_theta4(2) = 2*atan2(1-sqrt(1-C3*C3+C4*C4), C3+C4);
@@ -30,6 +30,7 @@ function [left_ang_deg, right_ang_deg] = inv_k(xt,yt)
 
      % Take the right solution for +- configuration
      % TODO: izracunaj i theta3 i 5 zbog ovoga
+     
 
     left_ang_deg = rad2deg(double(sol_theta2(1)));
     right_ang_deg = rad2deg(double(sol_theta4(2)));
