@@ -60,19 +60,65 @@ legend('ugao','ugaona brzina');
 clf
 
 L = 80;
-ang_displacement = x_1(:,1);
+ang_displacement_1 = x_1(:,1);
 ct = 1;
-for i = 1:length(ang_displacement)
-    Ang_disp = ang_displacement(i);
+for i = 1:length(ang_displacement_1)
+    Ang_disp_1 = ang_displacement_1(i);
     x0 = -40;
     y0 = 0;
-    x1 = x0 + L*sin(Ang_disp + pi/2);
-    y1 = y0 - L*cos(Ang_disp + pi/2);
+    x1 = x0 + L*sin(Ang_disp_1 + pi/2);
+    y1 = y0 - L*cos(Ang_disp_1 + pi/2);
     plot([-40,40],[0,0], 'LineWidth',1,'color','k')
     hold on
     plot([x0 x1],[y0 y1], 'LineWidth', 1,'color','k')
     hold on
     plot(x1,y1,'o','markersize',5,'Markerfacecolor','k');
+    hold off
+    axis([-160 160 -80 160]);   
+    M(ct) = getframe(gcf);    
+    ct = ct+1;   
+end
+%% dual independent link animation
+clear, clf
+
+x_1_0_deg = 90;
+x_1_0_rad = x_1_0_deg / 180 * pi;
+x_2_0_deg = 90;
+x_2_0_rad = x_1_0_deg / 180 * pi;
+
+t=0:0.01:1;
+x_1_0=[x_1_0_rad  0];                   % pocetni uslovi
+x_2_0=[x_2_0_rad  0];                   % pocetni uslovi
+
+[t, x_1] = ode45('single_link_ode',t,x_1_0);
+[t, x_2] = ode45('single_link_ode2',t,x_2_0);
+
+
+L = 80;
+ang_displacement_1 = x_1(:,1);
+ang_displacement_2 = x_2(:,1);
+ct = 1;
+for i = 1:length(ang_displacement_1)
+    Ang_disp_1 = ang_displacement_1(i);
+    x_1_0 = -40;
+    y_1_0 = 0;
+    x_1_1 = x_1_0 + L*sin(Ang_disp_1 + pi/2);
+    y_1_1 = y_1_0 - L*cos(Ang_disp_1 + pi/2);
+    plot([-40,40],[0,0], 'LineWidth',1,'color','k')
+    hold on
+    plot([x_1_0 x_1_1],[y_1_0 y_1_1], 'LineWidth', 1,'color','k')
+    hold on
+    plot(x_1_1,y_1_1,'o','markersize',5,'Markerfacecolor','k');
+
+    Ang_disp_2 = ang_displacement_2(i);
+    x_2_0 = 40;
+    y_2_0 = 0;
+    x_2_1 = x_2_0 + L*sin(Ang_disp_2 + pi/2);
+    y_2_1 = y_2_0 - L*cos(Ang_disp_2 + pi/2);
+    plot([x_2_0 x_2_1],[y_2_0 y_2_1], 'LineWidth', 1,'color','k')
+    hold on
+    plot(x_2_1,y_2_1,'o','markersize',5,'Markerfacecolor','k');
+
     hold off
     axis([-160 160 -80 160]);   
     M(ct) = getframe(gcf);    
