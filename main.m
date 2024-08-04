@@ -44,7 +44,7 @@ clear, clf
 x_1_0_deg = 90;
 x_1_0_rad = x_1_0_deg / 180 * pi;
 
-t=0:0.01:1;
+t=0:0.01:10;
 x_1_0=[x_1_0_rad  0];                   % pocetni uslovi
 
 [t, x_1] = ode45('single_link_ode',t,x_1_0);
