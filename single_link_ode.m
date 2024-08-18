@@ -1,5 +1,5 @@
 function xdot = single_link_ode(t,x)
-L = 0.08;            % duzina clana
+L = 0.09;            % duzina clana
 m = 0.05;              % masa clana
 B = 0.1;            % koeficijent prigusivanja
 J = 1/3 * m * L * L;
