@@ -1,4 +1,4 @@
-function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytcp, alpha3, alpha4] = forw_k(thetaL, thetaR, omegaL, omegaR, alphaL, alphaR)
+function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytcp, alpha3, alpha4] = forw_k_m(thetaL, thetaR, omegaL, omegaR, alphaL, alphaR)
     [L,P,D] = get_params();
 
     xA = -L/2 + P * cos(thetaL);
@@ -16,18 +16,22 @@ function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytc
     ytcp = yA + D*sin(theta3);
 
     % Velocities
-    syms Vxtcp Vytcp omega3 omega4
 
-    eqv1 = Vxtcp == -P*sin(thetaL)*omegaL - D*sin(theta3)*omega3;
-    eqv2 = Vxtcp == -P*sin(thetaR)*omegaR - D*sin(theta4R)*omega4;
-    eqv3 = Vytcp == P*cos(thetaL)*omegaL + D*cos(theta3)*omega3;
-    eqv4 = Vytcp == P*cos(thetaR)*omegaR + D*cos(theta4R)*omega4;
-
-    V = vpasolve(eqv1, eqv2, eqv3, eqv4, [Vxtcp, Vytcp, omega3, omega4]);
-    Vxtcp = double(V.Vxtcp);
-    Vytcp = double(V.Vytcp);
-    omega3 = double(V.omega3);
-    omega4 = double(V.omega4);
+    A_v = [ -1/(P*sin(thetaL)), 0, - D*sin(theta3)/(P*sin(thetaL)), 0;
+            -1/(P*sin(thetaR)), 0, - D*sin(theta4R)/(P*sin(thetaR)), 0;
+            0, 1/(P*cos(thetaL)), - D*cos(theta3)/(P*cos(thetaL)), 0;
+            0, 1/(P*cos(thetaR)), 0, - D*cos(theta4R)/(P*cos(thetaR))
+            ];
+    B_v = [   omegaL;
+            omegaR;
+            omegaL;
+            omegaR
+            ];
+    V = A_v\B_v;
+    Vxtcp = V(1);
+    Vytcp = V(2);
+    omega3 = V(3);
+    omega4 = V(4);
 
     % Accelerations
     syms axtcp aytcp alpha3 alpha4
