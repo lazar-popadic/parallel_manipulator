@@ -1,3 +1,31 @@
+%% inv k test
+clear, clf
+
+[start_ang_left, start_ang_right] = inv_k(0.09,0.001);
+[des_ang_left, des_ang_right] = inv_k(-0.09,0.001);
+
+plot_forw_k(rad2deg(start_ang_left), rad2deg(start_ang_right), rad2deg(des_ang_left), rad2deg(des_ang_right));
+pause(0.2);
+
+start_ang_left= des_ang_left;
+start_ang_right = des_ang_right;
+[des_ang_left, des_ang_right] = inv_k(0,0.14);
+
+plot_forw_k(rad2deg(start_ang_left), rad2deg(start_ang_right), rad2deg(des_ang_left), rad2deg(des_ang_right));
+pause(0.2);
+
+start_ang_left= des_ang_left;
+start_ang_right = des_ang_right;
+[des_ang_left, des_ang_right] = inv_k(0.09,0.001);
+
+plot_forw_k(rad2deg(start_ang_left), rad2deg(start_ang_right), rad2deg(des_ang_left), rad2deg(des_ang_right));
+pause(0.2);
+
+start_ang_left= des_ang_left;
+start_ang_right = des_ang_right;
+[des_ang_left, des_ang_right] = inv_k(0,0.04);
+
+plot_forw_k(rad2deg(start_ang_left), rad2deg(start_ang_right), rad2deg(des_ang_left), rad2deg(des_ang_right));
 %% forw k test
 clear, clf
 
@@ -8,35 +36,6 @@ pause(0.2);
 plot_forw_k(220, 135, 45, -40);
 pause(0.2);
 plot_forw_k(45, -40, 135, 45);
-
-%% inv k test
-clear, clf
-
-[start_ang_left, start_ang_right] = inv_k(90,1);
-[des_ang_left, des_ang_right] = inv_k(-90,1);
-
-plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
-pause(0.2);
-
-start_ang_left= des_ang_left;
-start_ang_right = des_ang_right;
-[des_ang_left, des_ang_right] = inv_k(0,140);
-
-plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
-pause(0.2);
-
-start_ang_left= des_ang_left;
-start_ang_right = des_ang_right;
-[des_ang_left, des_ang_right] = inv_k(90,1);
-
-plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
-pause(0.2);
-
-start_ang_left= des_ang_left;
-start_ang_right = des_ang_right;
-[des_ang_left, des_ang_right] = inv_k(0,60);
-
-plot_forw_k(start_ang_left, start_ang_right, des_ang_left, des_ang_right);
 
 %% single link dinamic test
 clear, clf
@@ -124,3 +123,8 @@ for i = 1:length(ang_displacement_1)
     M(ct) = getframe(gcf);    
     ct = ct+1;   
 end
+%% new inverse kinematics
+[thetaL, theta3, theta4R, thetaR] = inv_k(0.09,0.001)
+
+%% new forward kinematics
+[x, y, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytcp, alpha3, alpha4] = forw_k(pi/2, pi/4, 0.1, 0.1, 0.01, 0.01);
