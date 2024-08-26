@@ -1,9 +1,9 @@
-clear all
+clear
 
 %--------------------------------------------------------------------------------------------------------------------------------
 % Parametri simulacije
 %--------------------------------------------------------------------------------------------------------------------------------
-Tsim = 10e-6;                                                               % Fiksni korak simulacije: 10 [us]
+Tsim = 10e-3;                                                               % Fiksni korak simulacije: 10 [us]
 Tstart = 0;                                                                 % Vremenska instanca pocetka simulacije: 0 [s]
 Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
