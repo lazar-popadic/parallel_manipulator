@@ -1,7 +1,7 @@
 function cost = tunning(K)
 assignin('base', 'K', K);
-K
+%disp("____________");
+%K
 sim("five_bar.slx");
-cost = IAE1(length(IAE1))
-disp("____________");
+cost = IAE1(length(IAE1));
 end
