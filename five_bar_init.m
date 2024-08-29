@@ -1,9 +1,9 @@
 % Parametri dc motora
 Ra = 0.075;
-Ta = 20e-3;                                                                 % Vremenska konstanta elektromagnetnog podsistema rotora: Ta = La/Ra = 20 [ms]
+Ta = 1e-3;                                                                 % Vremenska konstanta elektromagnetnog podsistema rotora: Ta = La/Ra = 1 [ms]
 
-Bm = 1e-5;                                                                     % Normalizovana vrednost koeficijenta sile mehanickog trenja: 1e-5 [r.j]
-Tm = 300e-3;                                                                   % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
+Bm = 1e-6;                                                                     % Normalizovana vrednost koeficijenta sile mehanickog trenja: 1e-5 [r.j]
+Tm = 500e-3;                                                                   % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
 
 Kt = 1-Ra;                                                                % Normalizovana vrednost pobudnog napona statora (jednaka nazivnom fluksu masine): 0.925 [r.j]
 Kb = Kt;
