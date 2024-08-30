@@ -23,14 +23,21 @@ Rr = rad2deg(Rr);
 
 % Zadavanje parametara za PSO
 numvar = 3;
-K_start = [ 0.01, 0, 0];
-Inertia_range = [0.1, 0.9];
-Initial_swarm_span = [80, 1, 10];
+Inertia_range = [0.2, 0.9];
 
-lower_bounds = [0.4, 0, 0];
-upper_bounds = [80, 1, 10];
+lower_bounds = [0.01, 0, 0];
+upper_bounds = [1200, 120, 80];
+
+Initial_swarm_span = upper_bounds/100;
+K_start = [1,0.1,0.5];
+K = K_start;
+
+w = [1, 1, 1];
 
 % Parametri simulacije
 Tsim = 10e-4;                                                               % Fiksni korak simulacije: 10 [ms]
-Tstop = 1;                                                                  % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 10;                                                                  % Vremenska instanca zavrsetka simulacije: 10 [s]
 
+Mext = 16;
+Mext_start = 5;
+Mext_stop = 7.5;
