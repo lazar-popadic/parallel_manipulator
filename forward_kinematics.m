@@ -1,4 +1,4 @@
-function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytcp, alpha3, alpha4] = forward_kinematics(thetaL, thetaR, omegaL, omegaR, alphaL, alphaR)
+function [xtcp, ytcp, theta3, theta4R, Vtcp, omega3, omega4, atcp, alpha3, alpha4] = forward_kinematics(thetaL, thetaR, omegaL, omegaR, alphaL, alphaR)
     [L,P,D] = get_params();
 
     xA = -L/2 + P * cos(thetaL);
@@ -18,21 +18,22 @@ function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytc
     ytcp = yA + D*sin(theta3);
 
     % Velocities
-    A_v = [ -1/(P*sin(thetaL)), 0, - D*sin(theta3)/(P*sin(thetaL)), 0;
-            -1/(P*sin(thetaR)), 0, 0, - D*sin(theta4R)/(P*sin(thetaR));
-            0, 1/(P*cos(thetaL)), - D*cos(theta3)/(P*cos(thetaL)), 0;
-            0, 1/(P*cos(thetaR)), 0, - D*cos(theta4R)/(P*cos(thetaR))
+    A_v = [ -1, 0, - D*sin(theta3), 0;
+            -1, 0, 0, - D*sin(theta4R);
+            0, 1, - D*cos(theta3), 0;
+            0, 1, 0, - D*cos(theta4R)
             ];
-    B_v = [ omegaL;
-            omegaR;
-            omegaL;
-            omegaR
+    B_v = [ omegaL*P*sin(thetaL);
+            omegaR*P*sin(thetaR);
+            omegaL*P*cos(thetaL);
+            omegaR*P*cos(thetaR)
           ];
     V = A_v \ B_v;
     Vxtcp = V(1);
     Vytcp = V(2);
     omega3 = V(3);
     omega4 = V(4);
+    Vtcp = sqrt(Vxtcp^2+Vytcp^2);
 
     % Accelerations
     A_a = [ 1, 0, D*sin(theta3), 0;
@@ -50,4 +51,5 @@ function [xtcp, ytcp, theta3, theta4R, Vxtcp, Vytcp, omega3, omega4, axtcp, aytc
     aytcp = A(2);
     alpha3 = A(3);
     alpha4 = A(4);
+    atcp = sqrt(axtcp^2+aytcp^2);
 end

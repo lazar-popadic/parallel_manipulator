@@ -1,12 +1,12 @@
 % Parametri dc motora
 Ra = 0.075;
-Ta = 1e-3;                                                                 % Vremenska konstanta elektromagnetnog podsistema rotora: Ta = La/Ra = 1 [ms]
+Ta = 1e-3;                                                                  % Vremenska konstanta elektromagnetnog podsistema rotora: Ta = La/Ra = 1 [ms]
+Bm = 1e-6;                                                                  % Normalizovana vrednost koeficijenta sile mehanickog trenja: 1e-6 [r.j]
+Tm = 500e-3;                                                                % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
+psi_f = 1-Ra;                                                               % Normalizovana vrednost fluksa: 0.925 [r.j]
 
-Bm = 1e-6;                                                                     % Normalizovana vrednost koeficijenta sile mehanickog trenja: 1e-5 [r.j]
-Tm = 500e-3;                                                                   % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
-
-Kt = 1-Ra;                                                                % Normalizovana vrednost pobudnog napona statora (jednaka nazivnom fluksu masine): 0.925 [r.j]
-Kb = Kt;
+Koef_m = 2.1;                                                               % Koeficijent prebacivanja momenta iz normalizovanog domena
+Koef_w = 24;                                                                % Koeficijent prebacivanja brzine iz normalizovanog domena
 
 % Zadavanje referentnog i pocetnog polozaja
 x_start = 50e-3;
@@ -30,13 +30,14 @@ upper_bounds = [1200, 120, 80];
 
 Initial_swarm_span = upper_bounds/100;
 K_start = [1,0.1,0.5];
-K = K_start;
+% K = K_start;
+K = [15,0,0.4];
 
 w = [1, 1, 1];
 
 % Parametri simulacije
-Tsim = 10e-4;                                                               % Fiksni korak simulacije: 10 [ms]
-Tstop = 10;                                                                  % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tsim = 10e-4;                                                               % Fiksni korak simulacije: 1 [ms]
+Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = 16;
 Mext_start = 5;
