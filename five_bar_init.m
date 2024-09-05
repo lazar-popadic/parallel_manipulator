@@ -30,10 +30,11 @@ upper_bounds = [40, 4, 8];
 
 K_start = [1,0,0];
 % Initial_swarm_span = [0.1, 0.01, 0.01];
-% K = K_start;
-K = [15,0,0.4];
+K = K_start;
+%K = [15,0,0.4];
 
 w = [1, 4, 1.5];
+%w = [1,0,0];
 
 % Parametri simulacije
 Tsim = 10e-4;                                                               % Fiksni korak simulacije: 1 [ms]
