@@ -1,5 +1,5 @@
 % Parametri dc motora
-Ra = 0.075;
+Ra = 0.075;                                                                 % Normalizovana vrednost otpornosti: 0.075 [r.j]
 Ta = 1e-3;                                                                  % Vremenska konstanta elektromagnetnog podsistema rotora: Ta = La/Ra = 1 [ms]
 Bm = 1e-6;                                                                  % Normalizovana vrednost koeficijenta sile mehanickog trenja: 1e-6 [r.j]
 Tm = 500e-3;                                                                % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
@@ -25,15 +25,15 @@ Rr = rad2deg(Rr);
 numvar = 3;
 Inertia_range = [0.2, 0.9];
 
-lower_bounds = [0.01, 0, 0];
-upper_bounds = [1200, 120, 80];
+lower_bounds = [1, 0, 0];
+upper_bounds = [40, 4, 8];
 
-Initial_swarm_span = upper_bounds/100;
-K_start = [1,0.1,0.5];
+K_start = [1,0,0];
+% Initial_swarm_span = [0.1, 0.01, 0.01];
 % K = K_start;
 K = [15,0,0.4];
 
-w = [1, 1, 1];
+w = [1, 4, 1.5];
 
 % Parametri simulacije
 Tsim = 10e-4;                                                               % Fiksni korak simulacije: 1 [ms]
