@@ -14,24 +14,20 @@ y_start = 20e-3;
 x_ref = -50e-3;
 y_ref = 20e-3;
 
-[Ls, Rs] = inverse_kinematics(x_start, y_start);
-[Lr, Rr] = inverse_kinematics(x_ref, y_ref);
-Ls = rad2deg(Ls);
-Lr = rad2deg(Lr);
-Rs = rad2deg(Rs);
-Rr = rad2deg(Rr);
+% [Ls, Rs] = inverse_kinematics(x_start, y_start);
+% [Lr, Rr] = inverse_kinematics(x_ref, y_ref);
+% Ls = rad2deg(Ls);
+% Lr = rad2deg(Lr);
+% Rs = rad2deg(Rs);
+% Rr = rad2deg(Rr);
 
 % Zadavanje parametara za PSO
 numvar = 3;
 Inertia_range = [0.2, 0.9];
-
 lower_bounds = [1, 0, 0];
-upper_bounds = [40, 4, 8];
-
+upper_bounds = [40, 2, 8];
 K_start = [1,0,0];
-% Initial_swarm_span = [0.1, 0.01, 0.01];
 K = K_start;
-%K = [15,0,0.4];
 
 w = [1, 4, 1.5];
 %w = [1,0,0];
