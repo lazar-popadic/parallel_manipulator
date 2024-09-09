@@ -9,10 +9,10 @@ Koef_m = 2.1;                                                               % Ko
 Koef_w = 24;                                                                % Koeficijent prebacivanja brzine iz normalizovanog domena
 
 % Zadavanje referentnog i pocetnog polozaja
-x_start = 50e-3;
-y_start = 20e-3;
-x_ref = -50e-3;
-y_ref = 20e-3;
+x_start = 40e-3;
+y_start = 60e-3;
+x_ref = -40e-3;
+y_ref = 60e-3;
 
 % [Ls, Rs] = inverse_kinematics(x_start, y_start);
 % [Lr, Rr] = inverse_kinematics(x_ref, y_ref);
@@ -23,19 +23,41 @@ y_ref = 20e-3;
 
 % Zadavanje parametara za PSO
 numvar = 3;
-Inertia_range = [0.2, 0.9];
-lower_bounds = [1, 0, 0];
-upper_bounds = [40, 2, 8];
-K_start = [1,0,0];
-K = K_start;
+Inertia_range = [0.4, 0.9];
 
-w = [1, 4, 1.5];
+lower_bounds = [2, 0, 0];
+upper_bounds = [30, 36, 20];
+
+K_start = [10,12,6];
+% Initial_swarm_span = [0.1, 0.01, 0.01];
+K = K_start;
+%K = [6.6976, 0, 0.1206];
+
+w = [1, 1, 1];
 %w = [1,0,0];
 
 % Parametri simulacije
-Tsim = 10e-4;                                                               % Fiksni korak simulacije: 1 [ms]
+Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
 Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = 16;
-Mext_start = 5;
-Mext_stop = 7.5;
+%Mext = 0;
+Mext_start = 1;
+Mext_stop = 10;
+
+%% duga putanja
+x_s1 = 80e-3;
+y_s1 = 40e-3;
+%K = [11.94,0,0.4];
+x_start = x_s1;
+x_ref = - x_s1;
+y_start = y_s1;
+y_ref = y_s1;
+%% kratka putanja
+x_s2 = 10e-3;
+y_s2 = 60e-3;
+%K = [1.2651,0,0.036];
+x_start = x_s2;
+x_ref = - x_s2;
+y_start = y_s2;
+y_ref = y_s2;
