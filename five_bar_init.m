@@ -26,12 +26,12 @@ numvar = 3;
 Inertia_range = [0.4, 0.9];
 
 lower_bounds = [0.1, 0.1, 0];
-upper_bounds = [40, 10, 4];
+upper_bounds = [64, 8, 8];
 
 %K_start = upper_bounds/2;
 
 %w = [0.01, 0.01, 1];
-w = [50000,0,0];
+w = [5000,0,0];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
