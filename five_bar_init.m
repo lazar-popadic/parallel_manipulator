@@ -30,8 +30,7 @@ upper_bounds = [64, 8, 8];
 
 %K_start = upper_bounds/2;
 
-%w = [0.01, 0.01, 1];
-w = [5000,0,0];
+w = [5000,1];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
