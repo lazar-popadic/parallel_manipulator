@@ -25,20 +25,19 @@ y_ref = 60e-3;
 numvar = 3;
 Inertia_range = [0.4, 0.9];
 
-lower_bounds = [0.1, 0.1, 0];
-upper_bounds = [64, 8, 8];
+lower_bounds = [0.4, 0.1, 0];
+upper_bounds = [64, 12, 8];
 
 %K_start = upper_bounds/2;
 
-w = [5000,1];
+w = [100000,1];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
-Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 20;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
-Mext = 2;
-% pri prvoj optimizaciji i neoptimizovan je stavljen moment jednak 2
-%Mext = 0;
+%Mext = 2;
+Mext = -1 + 2 * rand();
 Mext_start = 5;
 Mext_stop = 100;
 
