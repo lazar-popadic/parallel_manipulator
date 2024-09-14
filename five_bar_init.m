@@ -28,7 +28,7 @@ Inertia_range = [0.4, 0.9];
 lower_bounds = [0.1, 0.1, 0];
 upper_bounds = [128, 12, 16];
 
-w = [14400,1];
+w = [288,1];
 %w = [1,0];
 
 % Parametri simulacije
@@ -37,7 +37,7 @@ Tstop = 20;                                                                 % Vr
 
 Mext = -120;
 %Mext = -1-rand();
-Mext_start = 1;
+Mext_start = 2;
 Mext_stop = 1000;
 
 %% duga putanja
