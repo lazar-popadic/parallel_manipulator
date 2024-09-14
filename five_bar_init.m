@@ -26,18 +26,18 @@ numvar = 3;
 Inertia_range = [0.4, 0.9];
 
 lower_bounds = [0.1, 0.1, 0];
-upper_bounds = [128, 24, 16];
+upper_bounds = [128, 128, 16];
 
-w = [128,1];
+w = [0.1,1];
 %w = [1,0];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
-Tstop = 20;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = -120;
 %Mext = -1-rand();
-Mext_start = 2;
+Mext_start = 5;
 Mext_stop = 1000;
 
 %% duga putanja
