@@ -5,8 +5,8 @@ Bm = 1e-6;                                                                  % No
 Tm = 500e-3;                                                                % Vremenska konstanta mehanickog podsistema (vreme integracije brzine): Tm = 500 [ms]
 psi_f = 1-Ra;                                                               % Normalizovana vrednost fluksa: 0.925 [r.j]
 
-Koef_m = 4.2;                                                               % Koeficijent prebacivanja momenta iz normalizovanog domena
-Koef_w = 12;                                                                % Koeficijent prebacivanja brzine iz normalizovanog domena
+Koef_m = 10;                                                               % Koeficijent prebacivanja momenta iz normalizovanog domena
+Koef_w = 5;                                                                % Koeficijent prebacivanja brzine iz normalizovanog domena
 
 % Zadavanje referentnog i pocetnog polozaja
 x_start = 40e-3;
@@ -25,21 +25,20 @@ y_ref = 60e-3;
 numvar = 3;
 Inertia_range = [0.4, 0.9];
 
-lower_bounds = [0.4, 0.1, 0];
-upper_bounds = [64, 12, 8];
+lower_bounds = [0.1, 0.1, 0];
+upper_bounds = [128, 12, 16];
 
-%K_start = upper_bounds/2;
-
-w = [100000,1];
+w = [14400,1];
+%w = [1,0];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
 Tstop = 20;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
-%Mext = 2;
-Mext = -1 + 2 * rand();
-Mext_start = 5;
-Mext_stop = 100;
+Mext = -120;
+%Mext = -1-rand();
+Mext_start = 1;
+Mext_stop = 1000;
 
 %% duga putanja
 x_s1 = 80e-3;
