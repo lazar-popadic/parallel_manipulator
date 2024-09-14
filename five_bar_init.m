@@ -26,9 +26,9 @@ numvar = 3;
 Inertia_range = [0.4, 0.9];
 
 lower_bounds = [0.1, 0.1, 0];
-upper_bounds = [128, 12, 16];
+upper_bounds = [128, 24, 16];
 
-w = [288,1];
+w = [128,1];
 %w = [1,0];
 
 % Parametri simulacije
