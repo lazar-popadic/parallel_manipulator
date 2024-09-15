@@ -25,10 +25,10 @@ y_ref = 60e-3;
 numvar = 3;
 Inertia_range = [0.4, 0.9];
 
-lower_bounds = [0.1, 0.1, 0];
-upper_bounds = [128, 128, 16];
+lower_bounds = [0.1, 0.01, 0];
+upper_bounds = [256, 1024, 64];
 
-w = [0.1,1];
+w = [0.064,1];
 %w = [1,0];
 
 % Parametri simulacije
