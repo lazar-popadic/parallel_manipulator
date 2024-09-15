@@ -25,15 +25,15 @@ y_ref = 60e-3;
 numvar = 3;
 Inertia_range = [0.4, 0.9];
 
-lower_bounds = [6, 0.4, 0.2];
+lower_bounds = [6, 2, 0.2];
 upper_bounds = [52, 128, 4];
 
-w = [4, 1];
+w = [32, 1];
 %w = [1,0];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
-Tstop = 3;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 5;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = -12;
 %Mext = -1-rand();
