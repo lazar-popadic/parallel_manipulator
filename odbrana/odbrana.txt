@@ -1,0 +1,50 @@
+Inspiracija:
+- DexTAR
+- 3D stampac
+
+Teorija i implementacija:
+- Petosegmentni paralelni manipulator:
+	kinematika: sta je i kako je implementirana
+	dinamika: sta je i kako je implementirana
+	mjs pogoni ulazne clanove
+- PSO:
+	sta je optimizacija
+	inspiracija za pso
+	jednacina kretanja osnovnog pso algoritma
+	koriscene modifikacije i parametri
+	koristimo pso za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS
+
+Rezultati:
+- Bez optimizacije:
+	pocetni parametri
+	slike odziva
+	opis odziva i problemi
+- Prvi kriterijum optimalnosti:
+	ideja
+	slike odziva
+	opis odziva i problemi
+- Drugi kriterijum optimalnosti:
+	ideja
+	slike odziva
+	opis odziva i problemi
+- Provera rezultata na drugim putanjama
+	samo odzivi za obe putanje
+
+
+
+U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
+- sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
+- da je kretnja vrha alata glatka, odnosno bez preskoka pozicije i bez oscilacija.
+
+Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot), koji je prikazan na snimku.
+Kao i 3D stampaci koji koriste zatvorene kinematske lance, kao ovaj sto je prikazan na snimku.
+
+Sta su manipulatori?
+Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
+
+// Slika 3.1.1
+Kako bismo potpuno opisali kretnju manipulatora, potrebno je izvrsiti kinematsku analizu.
+Direktan kinematski problem modeluje kretnju vrha alata u zavisnosti od kretnje ulaznih segmenata.
+Inverzan kinematski problem resava potrebne ulazne uglove za zeljeni polozaj vrha alata.
+
+// Slika 3.1.2
