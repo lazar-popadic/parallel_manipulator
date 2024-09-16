@@ -31,20 +31,31 @@ Rezultati:
 	samo odzivi za obe putanje
 
 
-
+// UVOD
 U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
 - sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
 - da je kretnja vrha alata glatka, odnosno bez preskoka pozicije i bez oscilacija.
 
+// INSPIRACIJA
 Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot), koji je prikazan na snimku.
 Kao i 3D stampaci koji koriste zatvorene kinematske lance, kao ovaj sto je prikazan na snimku.
 
+// MANIPULATORI
 Sta su manipulatori?
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
 
-// Slika 3.1.1
+// KINEMATIKA, Slika 3.1.1
 Kako bismo potpuno opisali kretnju manipulatora, potrebno je izvrsiti kinematsku analizu.
 Direktan kinematski problem modeluje kretnju vrha alata u zavisnosti od kretnje ulaznih segmenata.
 Inverzan kinematski problem resava potrebne ulazne uglove za zeljeni polozaj vrha alata.
+Kinematska analiza je implementirana kao resenje sistema vektorskih jednacina koje opisuju polozaj, brzinu i ubrzanje vrha alata, preko karakteristicnih vektora.
 
-// Slika 3.1.2
+// DINAMIKA, Slika 3.1.2
+Dinamicka analiza odredjuje odnos izmedju kretnje manipulatora i opterecenja koja deluju na njega.
+Inverzan dinamicki problem modeluje potrebna ulazna opterecenja za zeljeno kretanje.
+Implementiran je kao resenje sistema jednacina, koje opisuju opterecenja koja deluju na svaki segment pojedinacno. // Slika matrice, jednacine (70) i (71)
+
+Ulazni clanovi su povezani na motore jednosmerne struje sa cetkica.
+(3 min)
+
+// PSO
