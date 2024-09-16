@@ -7,39 +7,30 @@ psi_f = 1-Ra;                                                               % No
 
 Koef_m = 10;                                                               % Koeficijent prebacivanja momenta iz normalizovanog domena
 Koef_w = 5;                                                                % Koeficijent prebacivanja brzine iz normalizovanog domena
-
 % Zadavanje referentnog i pocetnog polozaja
 x_start = 40e-3;
 y_start = 60e-3;
 x_ref = -40e-3;
-y_ref = 60e-3;
-
-% [Ls, Rs] = inverse_kinematics(x_start, y_start);
-% [Lr, Rr] = inverse_kinematics(x_ref, y_ref);
-% Ls = rad2deg(Ls);
-% Lr = rad2deg(Lr);
-% Rs = rad2deg(Rs);
-% Rr = rad2deg(Rr);
+y_ref = 60e-3; 
 
 % Zadavanje parametara za PSO
 numvar = 3;
 Inertia_range = [0.4, 0.9];
-
 lower_bounds = [6, 2, 0.2];
 upper_bounds = [52, 128, 4];
 
-w = [4, 1];
+w = [20, 1];
 %w = [1,0];
 
 % Parametri simulacije
+
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
 Tstop = 10;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
-Mext = -2;
+Mext = 60;
 %Mext = -1-rand();
-Mext_start = 2;
+Mext_start = 0;
 Mext_stop = 1000;
-
 %% duga putanja
 x_s1 = 80e-3;
 y_s1 = 40e-3;
@@ -56,6 +47,3 @@ x_start = x_s2;
 x_ref = - x_s2;
 y_start = y_s2;
 y_ref = y_s2;
-
-%%
-K=sol
