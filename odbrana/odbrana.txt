@@ -37,10 +37,10 @@ U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za
 - da je kretnja vrha alata glatka, odnosno bez preskoka pozicije i bez oscilacija.
 
 // INSPIRACIJA
-Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot), koji je prikazan na snimku.
-Kao i 3D stampaci koji koriste zatvorene kinematske lance, kao ovaj sto je prikazan na snimku.
+Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot), koji je prikazan na snimku. https://www.youtube.com/watch?v=jYHawaGL90o
+Kao i 3D stampaci koji koriste zatvorene kinematske lance, kao ovaj sto je prikazan na snimku. https://www.youtube.com/watch?v=MW8HApFoy38
 
-// MANIPULATORI
+// PARALELNI MANIPULATOR
 Sta su manipulatori?
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
 
@@ -55,7 +55,44 @@ Dinamicka analiza odredjuje odnos izmedju kretnje manipulatora i opterecenja koj
 Inverzan dinamicki problem modeluje potrebna ulazna opterecenja za zeljeno kretanje.
 Implementiran je kao resenje sistema jednacina, koje opisuju opterecenja koja deluju na svaki segment pojedinacno. // Slika matrice, jednacine (70) i (71)
 
-Ulazni clanovi su povezani na motore jednosmerne struje sa cetkica.
+Ulazni clanovi su povezani na motore jednosmerne struje sa cetkica (MJS).
 (3 min)
 
 // PSO
+Sta je optimizacija?
+Optimizacija je proces odredjivanja najboljeg resenja u skupu potencijalnih resenja, prema nekom kriterijumu optimalnosti.
+PSO (Particle swarm optimization) algoritam je globalna optimizaciona metoda koja je inspirisana socijalnim ponasanjem primecenim u jatima ptica pri potrazi za hranom.
+Skup potencijalnih resenja je definisan kao roj cestica koje mogu da se krecu kroz parametarski prostor.
+
+// Jednacine kretanja cestica
+Svaka cestica definise svoju putanju na osnovu trenutnog polozaja i brzine.
+Brzina se odredjuje na osnovu 3 komponente:
+	inercijalne,
+	kognitivne i
+	socijalne
+
+// Usvojene modifikacije i vrednosti
+Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
+	linearno smanjujuci inercijalni koeficijent i
+	prstenasta topologija okoline
+
+PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
+// stavi na prezentaciju usvojene parametre: wmax, wmin, cp, cg, broj cestica, broj iteracija
+
+// REZULTATI
+Pri optimizaciji je koriscena putanja srednje duzine (stavi koordinate na prezentaciju).
+Ukupno vreme simulacije je 4 sekunde, a korak je 2ms.
+Na ulazne segmente deluje poremecaj u vidu spoljasnjeg opterecenja, pocevsi od druge sekunde simulacije.
+
+// NEOPTIMIZOVANI PARAMETRI, slike 4.1.1 i 4.1.2
+Sa pocetnim PID parametrima (koji su dati na slajdu) dobija se odziv koji ima preskok i prigusene oscilacije.
+Takodje, sa ovakvim parametrima manipulator ne moze u potpunosti da kompenzuje poremecaj.
+
+// PRVI KRITERIJUM OPTIMALNOSTI, formula (74) samo sa integralom jos, slike 4.2.1 i 4.2.2
+Prvi kriterijum optimalnosti koji je koriscen za optimizaciju predstavlja integral proizvoda vremena i zbira apsolutnih vrednosti gresaka ulaznih uglova.
+Minimizacijom ovog kriterijuma trebalo bi da dobijemo odziv bez greske u stacionarnom stanju, sa sto kracim prelaznim rezimom.
+Taj zakljucak nam potvrdjuje i simulacija sa optimizovanim parametrima (koji su dati na slajdu).
+Greska usled poremecaja je u potpunosti kompenzovana, ali odziv ima znacajan preskok.
+
+// DRUGI KRITERIJUM OPTIMALNOSTI, formula (73) u koju su ubacene (74) i (75)
+Kako bismo smanjili preskok u prelaznom rezimu, kriterijum optimalnosti smo promenili na tezinsku sumu 2 kriterijuma.
