@@ -16,16 +16,15 @@ y_ref = 60e-3;
 % Zadavanje parametara za PSO
 numvar = 3;
 Inertia_range = [0.4, 0.9];
-lower_bounds = [6, 2, 0.2];
-upper_bounds = [52, 128, 4];
+lower_bounds = [1, 0.1, 0.1];
+upper_bounds = [128, 128, 4];
 
 w = [20, 1];
 %w = [1,0];
 
 % Parametri simulacije
-
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
-Tstop = 3;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 4;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = 120;
 %Mext = -1-rand();
