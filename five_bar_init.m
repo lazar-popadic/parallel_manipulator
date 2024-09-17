@@ -25,7 +25,7 @@ w = [20, 1];
 % Parametri simulacije
 
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
-Tstop = 3;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
+Tstop = 4;                                                                 % Vremenska instanca zavrsetka simulacije: 10 [s]
 
 Mext = 120;
 %Mext = -1-rand();
