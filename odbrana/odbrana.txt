@@ -114,4 +114,9 @@ Druga putanja za testiranje je znacajno kraca. (koordinate na slajdu i slika 4.4
 Kao i kod duze putanje, odziv je istovetan i za kratku putanju. (slika 4.4.3)
 
 // ZAKLJUCAK
-TODO: dodaj
+S obzirom da projektovano kretanje vrha alata zadovoljava zahteve optimalnog upravljanja pri svim testiranim putanjama, zakljucujemo da je cilj ovog rada uspesno zadovoljen.
+Uprkos uspehu, postoji prostor za dalja unapredjenja, kao na primer:
+	optimizacija po dodatnim kriterijumima, na primer utrosenoj energiji,
+	kaskadna regulacija sa pozicionom, brzinskom i strujnom petljom,
+	strukturna optimizacija za minimizaciju vibracija ili maksimizovanje radnog prostora,
+	generisanje putanje radi izbegavanja prepreka i interpolacije pravolinijskih i krivolinijskih putanja.
