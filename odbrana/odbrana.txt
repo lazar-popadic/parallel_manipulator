@@ -1,38 +1,3 @@
-Inspiracija:
-- DexTAR
-- 3D stampac
-
-Teorija i implementacija:
-- Petosegmentni paralelni manipulator:
-	kinematika: sta je i kako je implementirana
-	dinamika: sta je i kako je implementirana
-	mjs pogoni ulazne clanove
-- PSO:
-	sta je optimizacija
-	inspiracija za pso
-	jednacina kretanja osnovnog pso algoritma
-	koriscene modifikacije i parametri
-	koristimo pso za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS
-
-Rezultati:
-- Bez optimizacije:
-	pocetni parametri
-	slike odziva
-	opis odziva i problemi
-- Prvi kriterijum optimalnosti:
-	ideja
-	slike odziva
-	opis odziva i problemi
-- Drugi kriterijum optimalnosti:
-	ideja
-	slike odziva
-	opis odziva i problemi
-- Provera rezultata na drugim putanjama
-	samo odzivi za obe putanje
-
-Zakljucak!
-
-
 // UVOD
 U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
 - sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
@@ -120,3 +85,40 @@ Uprkos uspehu, postoji prostor za dalja unapredjenja, kao na primer:
 	kaskadna regulacija sa pozicionom, brzinskom i strujnom petljom,
 	strukturna optimizacija za minimizaciju vibracija ili maksimizovanje radnog prostora,
 	generisanje putanje radi izbegavanja prepreka i interpolacije pravolinijskih i krivolinijskih putanja.
+
+____________________________________________
+// ukratko
+
+Inspiracija:
+- DexTAR
+- 3D stampac
+
+Teorija i implementacija:
+- Petosegmentni paralelni manipulator:
+	kinematika: sta je i kako je implementirana
+	dinamika: sta je i kako je implementirana
+	mjs pogoni ulazne clanove
+- PSO:
+	sta je optimizacija
+	inspiracija za pso
+	jednacina kretanja osnovnog pso algoritma
+	koriscene modifikacije i parametri
+	koristimo pso za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS
+
+Rezultati:
+- Bez optimizacije:
+	pocetni parametri
+	slike odziva
+	opis odziva i problemi
+- Prvi kriterijum optimalnosti:
+	ideja
+	slike odziva
+	opis odziva i problemi
+- Drugi kriterijum optimalnosti:
+	ideja
+	slike odziva
+	opis odziva i problemi
+- Provera rezultata na drugim putanjama
+	samo odzivi za obe putanje
+
+Zakljucak
