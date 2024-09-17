@@ -30,6 +30,8 @@ Rezultati:
 - Provera rezultata na drugim putanjama
 	samo odzivi za obe putanje
 
+Zakljucak!
+
 
 // UVOD
 U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
@@ -110,3 +112,6 @@ Preskok je malih vrednosti i greska usled poremecaja je u potpunosti kompenzovan
 
 Druga putanja za testiranje je znacajno kraca. (koordinate na slajdu i slika 4.4.4)
 Kao i kod duze putanje, odziv je istovetan i za kratku putanju. (slika 4.4.3)
+
+// ZAKLJUCAK
+TODO: dodaj
