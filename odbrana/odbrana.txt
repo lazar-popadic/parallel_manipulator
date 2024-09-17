@@ -56,7 +56,7 @@ Inverzan dinamicki problem modeluje potrebna ulazna opterecenja za zeljeno kreta
 Implementiran je kao resenje sistema jednacina, koje opisuju opterecenja koja deluju na svaki segment pojedinacno. // Slika matrice, jednacine (70) i (71)
 
 Ulazni clanovi su povezani na motore jednosmerne struje sa cetkica (MJS).
-(3 min)
+
 
 // PSO
 Sta je optimizacija?
@@ -79,20 +79,34 @@ Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
 // stavi na prezentaciju usvojene parametre: wmax, wmin, cp, cg, broj cestica, broj iteracija
 
+
 // REZULTATI
 Pri optimizaciji je koriscena putanja srednje duzine (stavi koordinate na prezentaciju).
 Ukupno vreme simulacije je 4 sekunde, a korak je 2ms.
-Na ulazne segmente deluje poremecaj u vidu spoljasnjeg opterecenja, pocevsi od druge sekunde simulacije.
+Na ulazne segmente deluje poremecaj u vidu spoljasnjeg opterecenja, koji zapocinje u drugoj sekundi simulacije.
 
 // NEOPTIMIZOVANI PARAMETRI, slike 4.1.1 i 4.1.2
 Sa pocetnim PID parametrima (koji su dati na slajdu) dobija se odziv koji ima preskok i prigusene oscilacije.
-Takodje, sa ovakvim parametrima manipulator ne moze u potpunosti da kompenzuje poremecaj.
+Takodje, sa ovakvim parametrima manipulator ne moze u potpunosti da kompenzuje spoljasnji poremecaj.
 
 // PRVI KRITERIJUM OPTIMALNOSTI, formula (74) samo sa integralom jos, slike 4.2.1 i 4.2.2
 Prvi kriterijum optimalnosti koji je koriscen za optimizaciju predstavlja integral proizvoda vremena i zbira apsolutnih vrednosti gresaka ulaznih uglova.
 Minimizacijom ovog kriterijuma trebalo bi da dobijemo odziv bez greske u stacionarnom stanju, sa sto kracim prelaznim rezimom.
 Taj zakljucak nam potvrdjuje i simulacija sa optimizovanim parametrima (koji su dati na slajdu).
-Greska usled poremecaja je u potpunosti kompenzovana, ali odziv ima znacajan preskok.
+Odziv je brz i greska usled poremecaja je u potpunosti kompenzovana, ali odziv ima znacajan preskok, koji iznosi ....
 
-// DRUGI KRITERIJUM OPTIMALNOSTI, formula (73) u koju su ubacene (74) i (75)
-Kako bismo smanjili preskok u prelaznom rezimu, kriterijum optimalnosti smo promenili na tezinsku sumu 2 kriterijuma.
+// DRUGI KRITERIJUM OPTIMALNOSTI, formula (73) u koju su ubacene (74) i (75), slike 4.3.1 i 4.3.2
+Kako bismo smanjili preskok u prelaznom rezimu, u kriterijum optimalnosti smo dodali jos jednu podintegralnu funkciju, koja predstavlja zbir apsolutnih vrednosti ubrzanja ulaznih uglova.
+Optimizovanjem po ovom kriterijumu minimizujemo promene brzina ulaznih segmenata.
+Simulacijom sistema sa parametrima optimizovanim po oba kriterijuma dobijamo odziv sa znacajno manjim preskokom.
+Greska usled spoljasnjeg poremecaja je i u ovom slucaju potpuno kompenzovana.
+
+// PROVERA DOBIJENIH PARAMETARA
+Odziv manipulatora sa dobijenim parametrima smo proverili na jos 2 putanje.
+
+Prva putanja za testiranje je znacajno duza. (koordinate na slajdu i slika 4.4.2)
+Odziv ulaznih uglova je istih performansi kao pri putanji za koju su optimizovani parametri.
+Preskok je malih vrednosti i greska usled poremecaja je u potpunosti kompenzovana. (slika 4.4.1)
+
+Druga putanja za testiranje je znacajno kraca. (koordinate na slajdu i slika 4.4.4)
+Kao i kod duze putanje, odziv je istovetan i za kratku putanju. (slika 4.4.3)
