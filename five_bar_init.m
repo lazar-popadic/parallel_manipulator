@@ -17,10 +17,10 @@ y_ref = 60e-3;
 numvar = 3;
 Inertia_range = [0.4, 0.9];
 lower_bounds = [1, 0.1, 0.1];
-upper_bounds = [128, 128, 4];
+upper_bounds = [256, 256, 12];
 
-w = [20, 1];
-%w = [1,0];
+%w = [20, 1];
+w = [1,0];
 
 % Parametri simulacije
 Tsim = 2e-3;                                                               % Fiksni korak simulacije: 2 [ms]
