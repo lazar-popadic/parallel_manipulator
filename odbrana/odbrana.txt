@@ -43,7 +43,7 @@ Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 
 // Za sta koristimo PSO
 PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
-
+2
 // REZULTATI
 Pri optimizaciji je koriscena putanja srednje duzine (stavi koordinate na prezentaciju).
 Ukupno vreme simulacije je 4 sekunde, a korak je 2ms.
