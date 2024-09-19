@@ -1,36 +1,35 @@
 // UVOD
 U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
 - sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
-- da kretnja vrha alata bude glatka, odnosno bez preskoka pozicije i bez oscilacija.
+- da kretnja vrha alata bude glatka, odnosno sto manji preskok polozaja i bez oscilacija.
 
 // INSPIRACIJA
-Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot), koji je prikazan na snimku. https://www.youtube.com/watch?v=jYHawaGL90o
-Kao i 3D stampaci koji koriste zatvorene kinematske lance, kao ovaj sto je prikazan na snimku. https://www.youtube.com/watch?v=MW8HApFoy38
+Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot).
+Kao i 3D stampaci koji koriste zatvorene kinematske lance.
 
 // PARALELNI MANIPULATOR
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
 Manipulator koji je modelovan za ovaj rad se sastoji iz 5 segmenata i prikazan je na slici.
 
-// KINEMATIKA, Slika 3.1.1
+// KINEMATIKA
 Kako bismo potpuno opisali kretnju manipulatora, potrebno je izvrsiti kinematsku analizu.
 Direktan kinematski problem je koriscen za modelovanje kretanja vrha alata u zavisnosti od ulaznih segmenata.
 Resenje inverznog kinematskog problema je korisceno za zadavanje zeljenog/referentnog polozaja vrha alata.
 
-// DINAMIKA, Slika 3.1.2
+// DINAMIKA
 Dinamicka analiza odredjuje odnos izmedju kretnje manipulatora i opterecenja koja deluju na njega.
-Pri modelovanju ovog sistema resen je inverzan dinamicki problem, koji modeluje opterecenja koja deluju na ulazne segmente pri zadatom kretanju. // Slika matrice, jednacine (70) i (71)
+Pri modelovanju ovog sistema resen je inverzan dinamicki problem, koji modeluje opterecenja koja deluju na ulazne segmente pri zadatom kretanju.
 
 Ulazni clanovi manipulatora su povezani na masine jednosmerne struje sa cetkica (MJS).
 
 
 // PSO
-// na slajdu stoji: Sta je optimizacija? ili samo: Optimizacija
 Optimizacija je proces odredjivanja najboljeg resenja prema nekom kriterijumu optimalnosti.
 PSO (Particle swarm optimization) algoritam je evolutivna optimizaciona metoda koja je inspirisana socijalnim ponasanjem primecenim u jatima ptica pri potrazi za hranom.
 Skup potencijalnih resenja PSO algoritma je definisan kao roj cestica koje mogu da se krecu kroz parametarski prostor.
 
 // Jednacine kretanja cestica
-Svaka cestica definise svoju putanju na osnovu trenutnog polozaja i brzine. // stavi one 2 jednacine
+Svaka cestica definise svoju putanju na osnovu trenutnog polozaja i brzine.
 Brzina se odredjuje na osnovu 3 komponente:
 	inercijalne,
 	kognitivne i
@@ -41,39 +40,39 @@ Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 	linearno smanjujuci inercijalni koeficijent i
 	prstenasta topologija okoline
 
-// Za sta koristimo PSO
 PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
-2
+
 // REZULTATI
 Pri optimizaciji je koriscena putanja srednje duzine (stavi koordinate na prezentaciju).
 Ukupno vreme simulacije je 4 sekunde, a korak je 2ms.
 Na ulazne segmente deluje odskocni poremecaj u vidu spoljasnjeg opterecenja, koji zapocinje u drugoj sekundi simulacije.
 
-// NEOPTIMIZOVANI PARAMETRI, slike 4.1.1 i 4.1.2
-Sa pocetnim PID parametrima (koji su dati na slajdu) dobija se odziv koji ima preskok i prigusene oscilacije.
+// NEOPTIMIZOVANI PARAMETRI
+Sa pocetnim PID parametrima dobija se odziv koji ima preskok, vrednosti 0,1 rad i prigusene oscilacije, koje traju 0,5s.
 Takodje, sa ovakvim parametrima manipulator ne moze u potpunosti da kompenzuje spoljasnji poremecaj.
 
-// PRVI KRITERIJUM OPTIMALNOSTI, formula (74) samo sa integralom jos, slike 4.2.1 i 4.2.2
+// PRVI KRITERIJUM OPTIMALNOSTI
 Prvi kriterijum optimalnosti koji je koriscen za optimizaciju predstavlja integral proizvoda vremena i zbira apsolutnih vrednosti gresaka ulaznih uglova.
 Minimizacijom po ovom kriterijumu trebalo bi da dobijemo odziv bez greske u stacionarnom stanju, sa sto kracim prelaznim rezimom.
 Taj zakljucak nam potvrdjuje i simulacija sa dobijenim parametrima (koji su dati na slajdu).
-Odziv je brz i greska usled poremecaja je u potpunosti kompenzovana, ali odziv ulaznih uglova ima znacajan preskok, koji iznosi ....
+Odziv je brz i greska usled poremecaja je u potpunosti kompenzovana, ali odziv ulaznih uglova ima znacajan preskok, koji iznosi 0.1rad.
 
-// DRUGI KRITERIJUM OPTIMALNOSTI, formula (73) u koju su ubacene (74) i (75), slike 4.3.1 i 4.3.2
-Kako bismo smanjili preskok u prelaznom rezimu, u kriterijum optimalnosti smo dodali jos jednu podintegralnu funkciju, koja predstavlja zbir apsolutnih vrednosti ubrzanja ulaznih uglova.
+// DRUGI KRITERIJUM OPTIMALNOSTI
+Kako bismo smanjili preskok u prelaznom rezimu, dodali smo drugi kriterijum optimalnosti, koji predstavlja zbir apsolutnih vrednosti ubrzanja ulaznih segmenata.
 Optimizovanjem po ovom kriterijumu minimizujemo promene ugaonih brzina ulaznih segmenata.
-Simulacijom sistema sa parametrima optimizovanim po oba kriterijuma dobijamo odziv sa znacajno manjim preskokom, koj iznosi ...
+Kako bismo koristili oba kriterijuma odjednom, kriterijum optimalnosti smo predstavili kao tezinsku sumu oba kriterijuma.
+Simulacijom sistema sa parametrima optimizovanim po oba kriterijuma dobijamo odziv sa znacajno manjim preskokom, koji iznosi 0.01rad, odnosno 10 puta manji preskok.
 Greska usled spoljasnjeg poremecaja je i u ovom slucaju potpuno kompenzovana.
 
 // PROVERA DOBIJENIH PARAMETARA
 Odziv manipulatora sa dobijenim parametrima smo proverili na jos 2 putanje.
 
-Prva putanja za testiranje je znacajno duza. (koordinate na slajdu i slika 4.4.2)
+Prva putanja za testiranje je znacajno duza.
 Odziv ulaznih uglova je istih performansi kao pri putanji za koju su optimizovani parametri.
-Preskok je malih vrednosti i greska usled poremecaja je u potpunosti kompenzovana. (slika 4.4.1)
+Preskok je malih vrednosti i greska usled poremecaja je u potpunosti kompenzovana.
 
-Druga putanja za testiranje je znacajno kraca. (koordinate na slajdu i slika 4.4.4)
-Kao i kod duze putanje, odziv je istovetan i za kratku putanju. (slika 4.4.3)
+Druga putanja za testiranje je znacajno kraca.
+Kao i kod duze putanje, odziv je istovetan i za kratku putanju.
 
 // ZAKLJUCAK
 S obzirom da projektovano kretanje vrha alata zadovoljava zahteve optimalnog upravljanja pri svim testiranim putanjama, zakljucujemo da je cilj ovog rada uspesno zadovoljen.
