@@ -36,11 +36,11 @@ Brzina se odredjuje na osnovu 3 komponente:
 	socijalne
 
 // Usvojene modifikacije i vrednosti
+PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
+
 Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 	linearno smanjujuci inercijalni koeficijent i
 	prstenasta topologija okoline
-
-PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
 
 
 // REZULTATI
@@ -55,7 +55,7 @@ Takodje, sa ovakvim parametrima manipulator ne moze u potpunosti da kompenzuje s
 // PRVI KRITERIJUM OPTIMALNOSTI
 Prvi kriterijum optimalnosti koji je koriscen za optimizaciju predstavlja integral proizvoda vremena i zbira apsolutnih vrednosti gresaka ulaznih uglova.
 Minimizacijom po ovom kriterijumu trebalo bi da dobijemo odziv bez greske u stacionarnom stanju, sa sto kracim prelaznim rezimom.
-Taj zakljucak nam potvrdjuje i simulacija sa dobijenim parametrima (koji su dati na slajdu).
+Taj zakljucak nam potvrdjuje i simulacija sa dobijenim parametrima.
 Odziv je brz i greska usled poremecaja je u potpunosti kompenzovana, ali odziv ulaznih uglova ima znacajan preskok, koji iznosi 0.1rad.
 
 // DRUGI KRITERIJUM OPTIMALNOSTI
