@@ -3,9 +3,11 @@ U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za
 - sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
 - da kretnja vrha alata bude glatka, odnosno sto manji preskok polozaja i bez oscilacija.
 
+
 // INSPIRACIJA
 Inspiraciju za ovu temu predstavlja DexTAR (Dextrous Twin-Arm Robot).
 Kao i 3D stampaci koji koriste zatvorene kinematske lance.
+
 
 // PARALELNI MANIPULATOR
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
@@ -19,6 +21,7 @@ Resenje inverznog kinematskog problema je korisceno za zadavanje zeljenog/refere
 // DINAMIKA
 Dinamicka analiza odredjuje odnos izmedju kretnje manipulatora i opterecenja koja deluju na njega.
 Pri modelovanju ovog sistema resen je inverzan dinamicki problem, koji modeluje opterecenja koja deluju na ulazne segmente pri zadatom kretanju.
+
 
 // PSO
 Optimizacija je proces odredjivanja najboljeg resenja, iz skupa potencijalnih, prema nekom kriterijumu optimalnosti.
@@ -38,6 +41,7 @@ Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 	prstenasta topologija okoline
 
 PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
+
 
 // REZULTATI
 Pri optimizaciji je koriscena putanja srednje duzine.
@@ -61,6 +65,7 @@ Kako bismo koristili oba kriterijuma odjednom, vrsimo optimizaciju po tezinskoj 
 Simulacijom sistema sa parametrima optimizovanim po oba kriterijuma dobijamo odziv sa znacajno manjim preskokom, koji iznosi 0.01rad, odnosno 10 puta manji preskok.
 Greska usled spoljasnjeg poremecaja je i u ovom slucaju potpuno kompenzovana.
 
+
 // PROVERA DOBIJENIH PARAMETARA
 Odziv manipulatora sa dobijenim parametrima smo proverili na jos 2 putanje.
 
@@ -70,6 +75,7 @@ Preskok je malih vrednosti i greska usled poremecaja je u potpunosti kompenzovan
 
 Druga putanja za testiranje je znacajno kraca.
 Kao i kod duze putanje, odziv je istovetan i za kratku putanju.
+
 
 // ZAKLJUCAK
 S obzirom da projektovano kretanje vrha alata zadovoljava zahteve optimalnog upravljanja pri svim testiranim putanjama, zakljucujemo da je cilj ovog rada uspesno zadovoljen.
