@@ -1,5 +1,5 @@
 // UVOD
-U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje manipulatorom podrazumevaju:
+U ovom radu je prikazan princip koriscenja globalnog optimizacionog algoritma za projektovanje optimalnog upravljanja paralelnim manipulatorom. Osnovni zahtevi za optimalno upravljanje podrazumevaju:
 - sposobnost manipulatora da sto pre dovede vrh alata u zeljeni polozaj i
 - da kretnja vrha alata bude glatka, odnosno sto manji preskok polozaja i bez oscilacija.
 
@@ -9,7 +9,7 @@ Kao i 3D stampaci koji koriste zatvorene kinematske lance.
 
 // PARALELNI MANIPULATOR
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
-Manipulator koji je modelovan za ovaj rad se sastoji iz 5 segmenata i prikazan je na slici.
+Manipulator koji je modelovan za ovaj rad se sastoji iz 5 segmenata, 2 segmenta su povezana MJS, 2 su pasivna i 1 je nepokretan.
 
 // KINEMATIKA
 Kako bismo potpuno opisali kretnju manipulatora, potrebno je izvrsiti kinematsku analizu.
@@ -20,11 +20,8 @@ Resenje inverznog kinematskog problema je korisceno za zadavanje zeljenog/refere
 Dinamicka analiza odredjuje odnos izmedju kretnje manipulatora i opterecenja koja deluju na njega.
 Pri modelovanju ovog sistema resen je inverzan dinamicki problem, koji modeluje opterecenja koja deluju na ulazne segmente pri zadatom kretanju.
 
-Ulazni clanovi manipulatora su povezani na masine jednosmerne struje sa cetkica (MJS).
-
-
 // PSO
-Optimizacija je proces odredjivanja najboljeg resenja prema nekom kriterijumu optimalnosti.
+Optimizacija je proces odredjivanja najboljeg resenja, iz skupa potencijalnih, prema nekom kriterijumu optimalnosti.
 PSO (Particle swarm optimization) algoritam je evolutivna optimizaciona metoda koja je inspirisana socijalnim ponasanjem primecenim u jatima ptica pri potrazi za hranom.
 Skup potencijalnih resenja PSO algoritma je definisan kao roj cestica koje mogu da se krecu kroz parametarski prostor.
 
