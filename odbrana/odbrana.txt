@@ -9,7 +9,7 @@ Kao i 3D stampaci koji koriste zatvorene kinematske lance.
 
 // PARALELNI MANIPULATOR
 Manipulatori su uredjaji koji vrse manipulaciju objektima u prostoru. Paralelni manipulatori predstavljaju vrstu manipulatora sa zatvorenim kinematskih lancem.
-Manipulator koji je modelovan za ovaj rad se sastoji iz 5 segmenata, 2 segmenta su povezana MJS, 2 su pasivna i 1 je nepokretan.
+U ovom radu je detaljno opisan predstavnik paralelnih manipulatora, koji se sastoji iz 5 segmenata, 2 segmenta su povezana MJS, 2 su pasivna i 1 je nepokretan.
 
 // KINEMATIKA
 Kako bismo potpuno opisali kretnju manipulatora, potrebno je izvrsiti kinematsku analizu.
@@ -40,7 +40,7 @@ Za optimizaciju je koriscen PSO algoritam sa 2 modifikacije:
 PSO algoritam koristimo za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS.
 
 // REZULTATI
-Pri optimizaciji je koriscena putanja srednje duzine (stavi koordinate na prezentaciju).
+Pri optimizaciji je koriscena putanja srednje duzine.
 Ukupno vreme simulacije je 4 sekunde, a korak je 2ms.
 Na ulazne segmente deluje odskocni poremecaj u vidu spoljasnjeg opterecenja, koji zapocinje u drugoj sekundi simulacije.
 
@@ -57,7 +57,7 @@ Odziv je brz i greska usled poremecaja je u potpunosti kompenzovana, ali odziv u
 // DRUGI KRITERIJUM OPTIMALNOSTI
 Kako bismo smanjili preskok u prelaznom rezimu, dodali smo drugi kriterijum optimalnosti, koji predstavlja zbir apsolutnih vrednosti ubrzanja ulaznih segmenata.
 Optimizovanjem po ovom kriterijumu minimizujemo promene ugaonih brzina ulaznih segmenata.
-Kako bismo koristili oba kriterijuma odjednom, kriterijum optimalnosti smo predstavili kao tezinsku sumu oba kriterijuma.
+Kako bismo koristili oba kriterijuma odjednom, vrsimo optimizaciju po tezinskoj sumi oba kriterijuma.
 Simulacijom sistema sa parametrima optimizovanim po oba kriterijuma dobijamo odziv sa znacajno manjim preskokom, koji iznosi 0.01rad, odnosno 10 puta manji preskok.
 Greska usled spoljasnjeg poremecaja je i u ovom slucaju potpuno kompenzovana.
 
@@ -74,44 +74,7 @@ Kao i kod duze putanje, odziv je istovetan i za kratku putanju.
 // ZAKLJUCAK
 S obzirom da projektovano kretanje vrha alata zadovoljava zahteve optimalnog upravljanja pri svim testiranim putanjama, zakljucujemo da je cilj ovog rada uspesno zadovoljen.
 Uprkos uspehu, postoji prostor za dalja unapredjenja, kao na primer:
-	optimizacija po dodatnim kriterijumima, na primer utrosenoj energiji,
 	koriscenje kaskadne regulacije sa pozicionom, brzinskom i strujnom petljom,
+	optimizacija po dodatnim kriterijumima, na primer utrosenoj energiji,
 	strukturna optimizacija za minimizaciju vibracija ili maksimizovanje radnog prostora,
-	generisanje putanje radi izbegavanja prepreka i interpolacije pravolinijskih i krivolinijskih putanja.
-
-____________________________________________
-// ukratko
-
-Inspiracija:
-- DexTAR
-- 3D stampac
-
-Teorija i implementacija:
-- Petosegmentni paralelni manipulator:
-	kinematika: sta je i kako je implementirana
-	dinamika: sta je i kako je implementirana
-	mjs pogoni ulazne clanove
-- PSO:
-	sta je optimizacija
-	inspiracija za pso
-	jednacina kretanja osnovnog pso algoritma
-	koriscene modifikacije i parametri
-	koristimo pso za optimizaciju PID parametara koji upravljaju armaturnim naponom MJS
-
-Rezultati:
-- Bez optimizacije:
-	pocetni parametri
-	slike odziva
-	opis odziva i problemi
-- Prvi kriterijum optimalnosti:
-	ideja
-	slike odziva
-	opis odziva i problemi
-- Drugi kriterijum optimalnosti:
-	ideja
-	slike odziva
-	opis odziva i problemi
-- Provera rezultata na drugim putanjama
-	samo odzivi za obe putanje
-
-Zakljucak
+	generisanje putanje koje bi omogucilo interpolaciju pravolinijskih i krivolinijskih putanja, kao i izbegavanje prepreka.
